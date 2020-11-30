@@ -21,8 +21,8 @@ void union_of_member(int x, int y)
     //不是同一个祖先，就执行合并，否则跳过此步骤
     if (father_of_x != father_of_y)
     {
-        //parent数组的值若为负数，代表其集合中有多少个子嗣，该负数越小，说明子嗣越多，集合越大
-        if (parent[father_of_x] < parent[father_of_y])
+        //parent数组的值若为负数，代表其族群中有多少个子嗣，该负数越小，说明子嗣越多，族群越大
+        if (parent[father_of_x] <= parent[father_of_y])
         {
             // x的祖先子嗣更多，将y的族群作为子嗣并入x的族群
             parent[father_of_x] += parent[father_of_y];
@@ -41,10 +41,10 @@ void union_of_member(int x, int y)
 void show_result()
 {
     printf("%c", '\n');
-    for (int i = 1; i <= n; i++)
+    for (int i = 0; i < n; i++)
         printf("%d\t", i);
     printf("%c", '\n');
-    for (int i = 1; i <= n; i++)
+    for (int i = 0; i < n; i++)
         printf("%d\t", parent[i]);
     return;
 }
